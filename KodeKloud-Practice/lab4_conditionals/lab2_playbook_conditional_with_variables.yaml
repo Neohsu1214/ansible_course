@@ -1,0 +1,13 @@
+-
+    name: 'Am I an Adult or a Child?'
+    hosts: localhost
+    vars:
+        age: 25
+    tasks:
+        # 依照 age 決定執行動作要印出 Child 或 Adult
+        -
+            command: 'echo "I am a Child"'
+            when: '{{ age }} < 18'
+        -
+            command: 'echo "I am an Adult"'
+            when: '{{ age }} >= 18'
