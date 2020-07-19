@@ -1,0 +1,22 @@
+-
+    name: 'Install required packages'
+    hosts: localhost
+    vars:
+        packages:
+            - httpd
+            - binutils
+            - glibc
+            - ksh
+            - libaio
+            - libXext
+            - gcc
+            - make
+            - sysstat
+            - unixODBC
+            - mongodb
+            - nodejs
+            - grunt
+    tasks:
+        -   # 與前一例子一樣，但這次使用較貼近真實情況的例子做說明，在一部主機上透過 yum 安裝多個套件
+            yum: 'name={{ item }} state=present'
+            with_items: '{{ packages }}'
