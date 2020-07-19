@@ -1,0 +1,8 @@
+-
+    name: 'Execute a script on all web server nodes'
+    hosts: all_servers
+    tasks:
+        -
+            service: 'name=mysql state=started'
+            # 當判斷執行的主機是 Inventory 檔案中的資料庫主機 server4.company.com 才執行
+            when: 'ansible_host=="server4.company.com"'
