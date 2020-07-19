@@ -1,0 +1,13 @@
+-
+    name: 'Print list of fruits'
+    hosts: localhost
+    vars:
+        fruits:
+            - Apple
+            - Banana
+            - Grapes
+            - Orange
+    tasks:
+        -   # 先將 fruits 定義的 list-array 放到 with_items，再將 item 資料放到 command 印出來
+            command: 'echo "{{ item }}"'
+            with_items: '{{ fruits }}'
