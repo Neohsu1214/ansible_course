@@ -8,3 +8,11 @@
                 path: /etc/resolv.conf
                 # 將原本寫死的 IP 改用 Inventory 中的 variable 取代
                 line: 'nameserver {{ nameserver_ip }}'
+        -
+            name: 'Disable SNMP Port'
+            firewalld:
+                # 將原本寫死的 port 資訊，放到 Inventory 檔案中，變成一個 variable 後，用該 variable 替換原本的 port 資訊
+                port: '{{ snmp_port }}'
+                permanent: true
+                state: disabled
+        
