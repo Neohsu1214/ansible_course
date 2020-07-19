@@ -1,0 +1,18 @@
+-
+    name: 'Execute a script on all web server nodes'
+    hosts: web_nodes
+    tasks:
+        -   # 以下為使用 lineinfile module 來新增資料到 /etc/resolv.conf 的範例
+            name: 'Update entry into /etc/resolv.conf'
+            lineinfile:
+                path: /etc/resolv.conf
+                line: 'nameserver 10.1.250.10'
+        -
+            name: 'Execute a script'
+            script: /tmp/install_script.sh
+        -
+            name: 'Start httpd service'
+            service:
+                name: httpd
+                state: present
+                

@@ -1,0 +1,10 @@
+-
+    name: 'Update nameserver entry into resolv.conf file on localhost'
+    hosts: localhost
+    tasks:
+        -
+            name: 'Update nameserver entry into resolv.conf file'
+            lineinfile:
+                path: /etc/resolv.conf
+                # 將原本寫死的 IP 改用 Inventory 中的 variable 取代
+                line: 'nameserver {{ nameserver_ip }}'

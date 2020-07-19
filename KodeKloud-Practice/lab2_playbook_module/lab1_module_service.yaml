@@ -1,0 +1,10 @@
+-
+    name: 'Execute a script on all web server nodes'
+    hosts: web_nodes
+    tasks:
+        -
+            name: 'Execute a script on all web server nodes'
+            script: /tmp/install_script.sh
+        -   # 以下為使用 service module 來啟動 httpd 的範例
+            name: 'Start httpd services'
+            service: 'name=httpd state=started'
