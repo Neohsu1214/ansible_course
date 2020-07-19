@@ -1,0 +1,18 @@
+-
+    name: 'Update nameserver entry into resolv.conf file on localhost'
+    hosts: localhost
+    # 透過直接在 playbook 中定義 variables 直接讓後續 tasks 可以取用
+    vars:
+        car_model: 'BMW M3'
+        country_name: USA
+        title: 'System Engineer'
+    tasks:
+        -
+            name: 'Print my car model'
+            command: 'echo "My car''s model is {{ car_model }}"'
+        -
+            name: 'Print my country'
+            command: 'echo "I live in the {{ country_name }}"'
+        -
+            name: 'Print my title'
+            command: 'echo "I work as a {{ title }}"'
