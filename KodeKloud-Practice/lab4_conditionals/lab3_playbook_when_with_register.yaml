@@ -1,0 +1,12 @@
+-
+    name: 'Add name server entry if not already entered'
+    hosts: localhost
+    tasks:
+        -
+            shell: 'cat /etc/resolv.conf'
+            # 透過 register: command_output 來接收回傳字串
+            register: command_output
+        -
+            shell: 'echo "nameserver 10.0.250.10" >> /etc/resolv.conf'
+            # 透過解析 command_output 的內容來判斷是否要執行
+            when: 'command_output.stdout.find("10.0.250.10") == -1'
